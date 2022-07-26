@@ -165,7 +165,7 @@ int main()
         sf::Texture texGameOver;
         texGameOver.loadFromFile("G://C++//projects//gamePoker//texture//endGame.jpg");
         sf::Sprite spriteEndGame(texGameOver);
-        spriteEndGame.move(350, 100);
+        spriteEndGame.move(350, 70);
         
         // переменная сбвигает карты, чтобы он  накладывались друг на друга
         int8_t k = 0;
@@ -544,7 +544,7 @@ int main()
             sf::Texture texLose;
             texLose.loadFromFile("G://C++//projects//gamePoker//texture//lose.png");
             sf::Sprite spriteLose(texLose);
-            spriteLose.move(300, 100);
+            spriteLose.move(300, 70);
             if (isLose)
             {
                 window.draw(spriteLose);

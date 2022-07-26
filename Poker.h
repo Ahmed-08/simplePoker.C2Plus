@@ -39,3 +39,5 @@ private:
 	short count_cards;
 	card* my_deck;
 };
+
+

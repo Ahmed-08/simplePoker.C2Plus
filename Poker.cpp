@@ -53,94 +53,75 @@ void Poker::shuffleCards()
 // ïğâåğÿåì êîìáèíàöèè
 short Poker::combinations(card* pl)
 {
-	if (
-			pl[0].card_suit == pl[1].card_suit && \
-			pl[1].card_suit == pl[2].card_suit && \
-			pl[2].card_suit == pl[3].card_suit && \
-			pl[3].card_suit == pl[4].card_suit
-		)
+	if (pl[0].card_suit == pl[1].card_suit && \
+		pl[1].card_suit == pl[2].card_suit && \
+		pl[2].card_suit == pl[3].card_suit && \
+		pl[3].card_suit == pl[4].card_suit)
 	{
-		if (
-				pl[0].number == 10 && \
-				pl[1].number - pl[0].number == 1 && \
-				pl[2].number - pl[1].number == 1 && \
-				pl[3].number - pl[2].number == 1 && \
-				pl[4].number - pl[3].number == 1
-			)
+		if (pl[0].number == 10 && \
+			pl[1].number - pl[0].number == 1 && \
+			pl[2].number - pl[1].number == 1 && \
+			pl[3].number - pl[2].number == 1 && \
+			pl[4].number - pl[3].number == 1)
 		{
-			return 11;
+			return 110;
 		}
-		if (
-				pl[1].number - pl[0].number == 1 && \
-				pl[2].number - pl[1].number == 1 && \
-				pl[3].number - pl[2].number == 1 && \
-				pl[4].number - pl[3].number == 1
-			)
+
+		if (pl[1].number - pl[0].number == 1 && \
+			pl[2].number - pl[1].number == 1 && \
+			pl[3].number - pl[2].number == 1 && \
+			pl[4].number - pl[3].number == 1)
 		{
-			return 10;
+			return 100;
 		}
-		return 7;
+		return 70;
 	}
-	if (
-			(pl[1].number == pl[2].number && \
-			pl[1].number == pl[3].number && \
-			pl[1].number == pl[4].number) \
-			 || 
-			(pl[0].number == pl[1].number && \
-			pl[0].number == pl[2].number && \
-			pl[0].number == pl[3].number)
-		)
-	{
-		return 9;
-	}
-	if (
-			(pl[2].number == pl[3].number && \
-			pl[2].number == pl[4].number)
-			||
-			(pl[0].number == pl[1].number && \
-			pl[0].number == pl[2].number)
-		)
-	{
-		if (pl[0].number == pl[2].number)
-		{
-			if (pl[3].number == pl[4].number)
-				return 8;
-		}
-		if (pl[2].number == pl[4].number)
-		{
-			if (pl[0].number == pl[1].number)
-				return 8;
-		}
-		return 5;
-	}
-	if (
-		pl[1].number - pl[0].number == 1 && \
-		pl[2].number - pl[1].number == 1 && \
-		pl[3].number - pl[2].number == 1 && \
-		pl[4].number - pl[3].number
-		)
-	{
-		return 6;
-	}
-	if (
+	if ((pl[1].number == pl[2].number && \
+		pl[1].number == pl[3].number && \
+		pl[1].number == pl[4].number) \
+			|| 
 		(pl[0].number == pl[1].number && \
-		pl[2].number == pl[3].number)
+		pl[0].number == pl[2].number && \
+		pl[0].number == pl[3].number))
+	{
+		return 90;
+	}
+	if ((pl[2].number == pl[3].number && \
+		pl[2].number == pl[4].number)
 		||
-		(pl[1].number == pl[2].number && \
-		pl[3].number == pl[4].number)
-		)
+		(pl[0].number == pl[1].number && \
+		pl[0].number == pl[2].number))
 	{
-		return 4;
+		if (pl[0].number != pl[1].number || pl[3].number != pl[4].number)
+		{
+			return 50;
+		}
+		else return 80;
 	}
-	if (
-		pl[0].number == pl[1].number || \
-		pl[2].number == pl[3].number || \
-		pl[3].number == pl[4].number
-		)
+	if (pl[0].number == 14 && (pl[2].number - pl[1].number==1 && \
+		pl[3].number - pl[2].number==1 && pl[4].number - pl[3].number == 1) ||
+		pl[4].number == 14 && (pl[1].number - pl[0].number == 1 && \
+			pl[2].number - pl[1].number == 1 && pl[3].number - pl[2].number == 1) ||
+		(pl[1].number - pl[0].number == 1 && pl[2].number - pl[1].number == 1 && \
+			pl[3].number - pl[2].number == 1 && pl[4].number - pl[3].number == 1))
 	{
-		return 3;
+		return 60;
 	}
-	return pl[4].number;
+
+	if ((pl[0].number == pl[1].number && pl[2].number == pl[3].number) ||
+		(pl[1].number == pl[2].number && pl[3].number == pl[4].number) ||
+		(pl[0].number == pl[1].number && pl[3].number == pl[4].number))
+	{
+		return 40;
+	}
+
+	if (pl[0].number == pl[1].number || pl[1].number == pl[2].number ||
+		pl[2].number == pl[3].number || pl[3].number == pl[4].number)
+	{
+		return 30;
+	}
+
+	return pl[0].number;
 }
 
 // ğàçäàåì êàğòû
